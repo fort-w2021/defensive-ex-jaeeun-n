@@ -8,7 +8,7 @@ tut.  Schreiben Sie ein paar simple Testfälle um ihre Modifikationen zu überpr
 lag <- function(x, n = 1L) {
   checkmate::assert_atomic_vector(x)
   checkmate::assert_count(n)
-  
+   
   xlen <- length(x)
   c(rep(NA, n), x[seq_len(xlen - n)])
 }
