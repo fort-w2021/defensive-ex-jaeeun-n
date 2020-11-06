@@ -4,7 +4,20 @@ Die Funktion `lag()` (s.u.) gibt eine Version ihres Vektor-Inputs `x` zurück, d
 tut.  Schreiben Sie ein paar simple Testfälle um ihre Modifikationen zu überprüfen -- also für Listen-, Matrizen-, oder `data.frame`-förmige `x`, ungeeignete `lag`-Werte, ...
 ```{r, lag-baddef}
 lag <- function(x, n = 1L) {
+  checkmate::assert_atomic_vector(x)
+  checkmate::assert_count(n)
+  
   xlen <- length(x)
   c(rep(NA, n), x[seq_len(xlen - n)])
 }
+ 
+# Testfälle
+a <- 1:6
+lag(a, 2)
+lag(a, 1.5)
+lag(a, -2)
+
+lag(matrix(a, nrow = 2), 2)
+lag(list(eins = 1, zwei = 2), 2)
+lag(letters, 2)
 ```
