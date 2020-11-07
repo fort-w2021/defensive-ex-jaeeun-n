@@ -74,7 +74,7 @@ test_that("deals with factors, characters", {
 })
 
 #extra bonus:
-if (FALSE) {
+if (TRUE) {
  #deal with Date-variables as well
     mtcars_date <- mtcars
     mtcars_date$date <- as.Date(seq_len(nrow(mtcars)), origin = Sys.Date())
@@ -91,3 +91,7 @@ if (FALSE) {
     mtcars_list$list_column <- list(mpg = mtcars$mpg, hp = mtcars$hp)
     # expect_what?
 }
+
+
+
+

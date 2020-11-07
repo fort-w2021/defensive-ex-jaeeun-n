@@ -4,7 +4,12 @@ Alternativer Titel: *Being a Cunt about Counts*
 
 
 ```{r, eval = FALSE}
+# Output soll eine sinnvolle Anzahl repräsentieren.
+# Falls Input kein Integer ist, soll gerundet werden und eine Warnmeldung
+# erscheinen.
 count_them <- function(supposedly_a_count) {
+  checkmate::assert_number(supposedly_a_count, lower = 0, finite = TRUE)
+  
   if (!checkmate::test_count(supposedly_a_count)) {
     warning(
       "rounding ", supposedly_a_count,
@@ -12,6 +17,8 @@ count_them <- function(supposedly_a_count) {
     )
     supposedly_a_count <- round(supposedly_a_count)
   }
+  
+  supposedly_a_count <- as.integer(supposedly_a_count)
   supposedly_a_count
 }
 ```
