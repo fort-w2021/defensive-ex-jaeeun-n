@@ -9,11 +9,11 @@ funktionieren oder zumindest hilfreiche Fehlermeldungen erzeugen. Benutzen Sie k
 ```{r, col_means_exdef, eval=FALSE}
 # compute means of all numeric columns in df
 # output: a data.frame
-col_means <- function(df, na.rm = FALSE) {
+col_means <- function(df, na_rm = FALSE) {
   
   df <- as.data.frame(df)
   
-  if(nrow(df) < 1 | ncol(df) < 1) {
+  if (nrow(df) < 1 | ncol(df) < 1) {
     warning("Dimension of the input < 1")
     return(data.frame())
   }
@@ -21,7 +21,7 @@ col_means <- function(df, na.rm = FALSE) {
   numeric <- vapply(df, is.numeric, logical(1))
   numeric_cols <- df[, numeric, drop = FALSE]
   
-  if(ncol(numeric_cols) < 1) {
+  if (ncol(numeric_cols) < 1) {
     warning("There are no numeric columns")
     return(data.frame())
   }
@@ -30,7 +30,7 @@ col_means <- function(df, na.rm = FALSE) {
   date_cols <- df[, date, drop = FALSE]
   
   df <- cbind(numeric_cols, date_cols)
-  data.frame(lapply(df, mean, na.rm = na.rm)) 
+  data.frame(lapply(df, mean, na.rm = na_rm)) 
 }
 ```
 
